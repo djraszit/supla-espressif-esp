@@ -415,7 +415,7 @@ extern const uint8_t rsa_public_key_bytes[RSA_NUM_BYTES];
 
 #ifndef RGBW_CHANNEL_LIMIT
 #define RGBW_CHANNEL_LIMIT \
-  if (ChannelNumber >= 2) return;
+  if (ChannelNumber > 2) return;
 #endif
 
 #ifdef DONT_SAVE_STATE

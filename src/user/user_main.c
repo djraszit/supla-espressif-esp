@@ -23,6 +23,7 @@
 #include <string.h>
 #include <user_interface.h>
 
+#include "driver/uart.h"
 #include "supla-dev/log.h"
 #include "supla_dht.h"
 #include "supla_ds18b20.h"
@@ -209,6 +210,8 @@ void MAIN_ICACHE_FLASH user_init(void) {
 #ifdef BOARD_USER_INIT
   BOARD_USER_INIT;
 #else
+
+  UART_SetBaudrate(UART0, BIT_RATE_115200);
 
   struct rst_info *rtc_info = system_get_rst_info();
   supla_log(LOG_DEBUG, "RST reason: %i", rtc_info->reason);

@@ -85,6 +85,7 @@ LINKFLAGS_eagle.app.v6 = \
 	-lnet80211	\
 	-lwpa	\
 	-lmain	\
+	-ldriver	\
 	-llwip	\
         -lcrypto \
         $(SUPLA_DEP_LIBS) \

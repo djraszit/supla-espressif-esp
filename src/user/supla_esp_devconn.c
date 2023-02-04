@@ -1008,8 +1008,10 @@ supla_esp_channel_set_value(TSD_SuplaChannelNewValue *new_value) {
 	dimmer_cn = DIMMER_CHANNEL;
 	#endif
 
+	dimmer_cn = dimmer_cn;
+
   if (new_value->ChannelNumber == rgb_cn ||
-      new_value->ChannelNumber == dimmer_cn RGBW_CHANNEl_CMP) {
+	  new_value->ChannelNumber <= 2 RGBW_CHANNEl_CMP ) {
 
 		int Color = 0;
 		char ColorBrightness = 0;
@@ -1072,7 +1074,7 @@ supla_esp_channel_set_value(TSD_SuplaChannelNewValue *new_value) {
 						supla_esp_state.turnedOff[new_value->ChannelNumber] |= 0x2;
 					}
 				}
-			} else if ( new_value->ChannelNumber == dimmer_cn
+			} else if ( new_value->ChannelNumber <= 2 //dimmer_cn
 					RGBW_CHANNEl_CMP ) {
 
         supla_esp_state.turnedOff[new_value->ChannelNumber] = 0;
@@ -1096,7 +1098,7 @@ supla_esp_channel_set_value(TSD_SuplaChannelNewValue *new_value) {
 			        ColorBrightness;
 			    supla_esp_state.brightness[new_value->ChannelNumber] = Brightness;
 
-			} else if (new_value->ChannelNumber == dimmer_cn RGBW_CHANNEl_CMP) {
+			} else if (new_value->ChannelNumber <= 2 RGBW_CHANNEl_CMP) {
 			    supla_esp_state.brightness[new_value->ChannelNumber] = Brightness;
 			}
 #endif /*RGBW_ONOFF_SUPPORT*/

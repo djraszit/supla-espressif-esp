@@ -67,8 +67,10 @@ void CFG_ICACHE_FLASH_ATTR _supla_esp_save_state(void *timer_arg) {
   if (SPI_FLASH_RESULT_OK ==
       spi_flash_write((CFG_SECTOR + STATE_SECTOR_OFFSET) * SPI_FLASH_SEC_SIZE,
         (uint32 *)&supla_esp_state, sizeof(SuplaEspState))) {
-    supla_log(LOG_DEBUG, "STATE WRITE SUCCESS");
+    supla_log(LOG_DEBUG, "STATE WRITE SUCCESS - spi_flash_write %d", sizeof(SuplaEspState));
     ets_intr_unlock();
+	supla_log(LOG_DEBUG, "ch1:%d, ch2:%d, ch3:%d\n\r", supla_esp_state.brightness[0], 
+			supla_esp_state.brightness[1], supla_esp_state.brightness[2]);
     return;
   }
 
