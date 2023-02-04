@@ -106,6 +106,7 @@ case $1 in
    "dimmer")
      DEP_LIBS="-lpwm"
      NOSSL=1
+     FLASH_SIZE="4096"
    ;;
    "rgbw_wroom")
       FLASH_SIZE="2048"
@@ -114,6 +115,7 @@ case $1 in
    "h801")
      DEP_LIBS="-lpwm -lssl"
      FOTA=1
+     FLASH_SIZE="4096"
    ;;
    "impulse_counter")
      FLASH_SIZE="2048"
